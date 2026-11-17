@@ -45,7 +45,6 @@ echo.
 echo [3/4] Procurando OpenCV / OpenSSL...
 
 if "%OPENCV_DIR%"=="" (
-    REM Tenta detectar o padrao do instalador oficial do OpenCV
     for /d %%D in ("C:\opencv\build") do set OPENCV_DIR=%%D
     for /d %%D in ("C:\Program Files\opencv\build") do set OPENCV_DIR=%%D
 )
@@ -59,7 +58,6 @@ if "%OPENCV_DIR%"=="" (
 echo    OpenCV: %OPENCV_DIR%
 
 if "%OPENSSL_ROOT_DIR%"=="" (
-    REM Tenta localizacao padrao
     if exist "C:\Program Files\OpenSSL-Win64" (
         set OPENSSL_ROOT_DIR=C:\Program Files\OpenSSL-Win64
     ) else if exist "C:\Program Files\OpenSSL" (
