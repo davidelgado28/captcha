@@ -10,7 +10,6 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Verifica Visual Studio (cl.exe no PATH ou ambiente VS)
 where cl >nul 2>nul
 if errorlevel 1 (
     echo [INFO] cl.exe nao esta no PATH. Tentando localizar Visual Studio...
