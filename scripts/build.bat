@@ -1,12 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM ============================================
-REM  Build do CAPTCHA C++ Server para Windows
-REM  Requisitos: CMake, Visual Studio (MSVC),
-REM              OpenCV, OpenSSL
-REM ============================================
-
 echo.
 echo [1/4] Verificando dependencias...
 
@@ -31,9 +25,6 @@ if errorlevel 1 (
     )
 )
 
-REM ============================================
-REM  Clona dependencias header-only
-REM ============================================
 echo.
 echo [2/4] Clonando dependencias header-only...
 
@@ -51,16 +42,9 @@ if not exist third_party\json (
     echo    nlohmann/json ja presente.
 )
 
-REM ============================================
-REM  Localiza OpenCV e OpenSSL
-REM ============================================
 echo.
 echo [3/4] Procurando OpenCV / OpenSSL...
 
-REM --- OpenCV ---
-REM Ajuste a variavel abaixo conforme sua instalacao, ex:
-REM   set OP_DIR=C:\opencv\build
-REM Ou use o caminho de instalacao via choco/vcpkg.
 if "%OPENCV_DIR%"=="" (
     REM Tenta detectar o padrao do instalador oficial do OpenCV
     for /d %%D in ("C:\opencv\build") do set OPENCV_DIR=%%D
@@ -75,7 +59,6 @@ if "%OPENCV_DIR%"=="" (
 )
 echo    OpenCV: %OPENCV_DIR%
 
-REM --- OpenSSL ---
 if "%OPENSSL_ROOT_DIR%"=="" (
     REM Tenta localizacao padrao
     if exist "C:\Program Files\OpenSSL-Win64" (
@@ -92,9 +75,6 @@ if "%OPENSSL_ROOT_DIR%"=="" (
     echo    OpenSSL: %OPENSSL_ROOT_DIR%
 )
 
-REM ============================================
-REM  Configura e compila
-REM ============================================
 echo.
 echo [4/4] Compilando...
 
