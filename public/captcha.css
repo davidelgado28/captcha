@@ -1,1 +1,11 @@
-
+.captcha-box { margin: 12px 0; }
+.captcha-media { display: flex; gap: 8px; align-items: center; }
+.captcha-img { border: 1px solid #ccc; border-radius: 4px; }
+.captcha-audio, .captcha-refresh {
+    border: none; background: #eee; padding: 6px 10px;
+    border-radius: 4px; cursor: pointer; font-size: 16px;
+}
+.captcha-input {
+    margin-top: 8px; padding: 8px; width: 240px;
+    border: 1px solid #ccc; border-radius: 4px;
+}
