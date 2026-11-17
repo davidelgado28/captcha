@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo CAPTCHA C++</title>
+    <link rel="stylesheet" href="/captcha.css">
+</head>
+<body>
+    <h1>Formulário com CAPTCHA</h1>
 
+    <form id="meu-form">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <div id="captcha-widget"></div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="status"></div>
+
+    <script src="/captcha.js"></script>
+    <script>
+        CaptchaWidget.mount('#captcha-widget', { apiUrl: '' });
+
+        document.getElementById('meu-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const token = CaptchaWidget.getToken();
+
+            if (!token) {
+                document.getElementById('status').textContent = 'Resolva o CAPTCHA primeiro!';
+                return;
+            }
+            document.getElementById('status').textContent =
+                'CAPTCHA validado! Token: ' + token;
+        });
+    </script>
+</body>
+</html>
